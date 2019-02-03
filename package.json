@@ -1,0 +1,54 @@
+{
+  "name": "prettier-code-insert",
+  "version": "1.0.0",
+  "description": "smart insert code and beautify it with prettier",
+  "main": "index.js",
+  "module": "index.esm.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jsdoc": "node jsdoc2md.js",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jacky-fe/prettier-code-insert.git"
+  },
+  "keywords": [
+    "prettier",
+    "code",
+    "insert"
+  ],
+  "author": "Jacky-fe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jacky-fe/prettier-code-insert/issues"
+  },
+  "homepage": "https://github.com/Jacky-fe/prettier-code-insert#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/types": "^7.3.0",
+    "@types/babel__core": "^7.0.4",
+    "@types/babel__traverse": "^7.0.4",
+    "@types/ms": "^0.7.30",
+    "@types/node": "^10.12.18",
+    "@types/prettier": "^1.15.2",
+    "eslint": "^5.13.0",
+    "jsdoc-md": "^1.7.1",
+    "jsdoc-to-markdown": "^4.0.1",
+    "ms": "^2.1.1",
+    "prettier": "^1.16.3",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^2.1.1",
+    "rollup-plugin-prettier": "^0.3.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-strip-banner": "^0.2.0",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "ts-node": "^8.0.2",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.1"
+  }
+}
