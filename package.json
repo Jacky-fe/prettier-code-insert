@@ -1,6 +1,6 @@
 {
   "name": "prettier-code-insert",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "smart insert code and beautify it with prettier",
   "main": "index.js",
   "module": "index.esm.js",
@@ -8,7 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jsdoc": "node jsdoc2md.js",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepublish": "rollup -c && node jsdoc2md.js"
   },
   "repository": {
     "type": "git",
