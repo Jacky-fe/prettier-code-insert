@@ -2,7 +2,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
-import prettierConfig from './.prettier.json';
 import pkg from './package.json';
 import path from 'path';
 
@@ -13,7 +12,7 @@ export default [
 		plugins: [
 			json(),
 			typescript({
-				useTsconfigDeclarationDir: false,
+				useTsconfigDeclarationDir: false
 			}), // so Rollup can convert TypeScript to JavaScript
 			commonjs({extensions: ['.js', '.ts']})
 		],

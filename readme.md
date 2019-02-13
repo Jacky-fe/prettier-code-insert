@@ -38,14 +38,12 @@ export default function createRoutes() {
 ``` js
 import fs from 'fs';
 import path from 'path';
-// 当前项目的babelrc文件，强烈建议引入
-import options from './babelrc';
 import insertCode from 'prettier-code-insert';
 export default function create() {
-  const filename = path.resolve(__dirname, './the/path/of/router.js');
+  const filename = path.resolve(__dirname, './the/path/of/your/code');
   const code = fs.readFileSync(filename, { encoding: 'utf-8' });
   return new Promise((resolve, reject) => {
-    let newCode = insertCode( code, [
+    insertCode(code, [
       {
         code: `import RouteA from "./route-a";`,
         slotName: 'import',
@@ -54,12 +52,12 @@ export default function create() {
         code: 'RouteA,',
         slotName: 'route',
       },
-    ], options);
-    fs.writeFileSync(filename, newCode);
-    resolve(true);
+    ]).then(newCode => {
+      fs.writeFileSync(filename, newCode);
+      resolve(true);
+    });
   });
 }
-
 ```
 
 执行后的代码
@@ -82,26 +80,16 @@ export default function createRoutes() {
 }
 ```
 
-
-
-## 注意事项
-1. 目前仅支持babel7
-2. 需要项目中安装babel7及prettier，这个不在本包的依赖中，而是和你的项目保持一致
-3. 如果需要支持typescript，请安装“@babel/typescript”, 并在.babelrc配置里引用它
-
-
 ## API
 <a name="insertCode"></a>
 
-## insertCode(sourceCode, codeSnaps, babelOptions, prettierConfig?) ⇒
-将代码插入到指定的位置中
+## insertCode(sourceCode, codeSnaps) ⇒
+将代码插入到指定的slot中
 
 **Kind**: global function  
-**Returns**: 转换后的代码 string  
+**Returns**: 转换后的代码 Promise&lt;string&gt;
 
 | Param | Type | Description |
 | --- | --- | --- |
 | sourceCode | <code>string</code> | 被插入代码的源码 |
-| codeSnaps | <code>Array.&lt;CodeSnap&gt;</code> | 代码片段，格式： { code: 'import xxx from'xxx';', slotName: 'import' }。会将sourcecode里对应slot的地方插入代码 |
-| babelOptions | <code>babel.ParserOptions</code> | 最好将当前项目的babelconfig传过来，避免解析错误 |
-| prettierConfig? | <code>prettier.Options</code> | 默认会读取当前项目的".prettierrc"文件，也可以自己传入 |
+| codeSnaps | <code>Array&lt;CodeSnap&gt;</code> | 代码片段，格式： { code: string, slotName: string }。会将sourcecode里对应slot的地方插入代码 |
